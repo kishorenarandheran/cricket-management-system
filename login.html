@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <title>USER LOGIN</title>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;background-repeat: no repeat;
+  background-size: 100%;
+}
+form {border: 0px solid #f1f1f1;}
+h2{font-size: 100px; color: #f1f1f1;
+text-align:center; }
+input[type=text], input[type=password] {
+    width: 20%;
+    padding: 12px 20px;
+    margin: 8px 5px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #000000;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    border-radius: 50%;
+    border-style: groove;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+</style>
+</head>
+<body background="img/uslogin.jpg">
+
+
+<h2><i>Indian Premier League</h2>
+
+<form action="login.php" method="post">
+  <div class="imgcontainer">
+  </div>
+  <div class="container" style="text-align:center;">
+    
+    <label for="uname" style="color: rgb(255, 255, 255);"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required><br><br>
+
+    <label for="psw" style="color: rgb(255, 255, 255);"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required><br><br>
+        
+    <button type="submit">Login</button>
+   <p style="text-align:center;">  <a href="create.html" ><b>CREATE AN ACCOUNT</b></a></p>
+    
+  </div>
+ </form>
+</body>
+</html>

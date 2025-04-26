@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .nav-link {
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .nav-link:hover {
+            background-color: #ffffff;
+            transform: scale(1.05);
+        }
+        .footer-link {
+            transition: background-color 0.3s ease;
+        }
+        .footer-link:hover {
+            background-color: #e5e7eb;
+        }
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .slider img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .prev-btn {
+            left: 10px;
+        }
+        .next-btn {
+            right: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-center">
+            <img src="img/OIP.jpeg" alt="Cricket Logo" class="h-24 object-contain">
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <ul class="flex flex-wrap justify-center space-x-2 py-4">
+                <li><a href="admin1st.html" class="nav-link px-4 py-2 rounded-full hover:bg-white hover:text-blue-600">Home</a></li>
+                <li><a href="schedule.php" class="nav-link px-4 py-2 rounded-full hover:bg-white hover:text-blue-600">Schedules</a></li>
+                <li><a href="rank.php" class="nav-link px-4 py-2 rounded-full hover:bg-white hover:text-blue-600">Rankings</a></li>
+                <li><a href="stadium.php" class="nav-link px-4 py-2 rounded-full hover:bg-white hover:text-blue-600">Stadiums</a></li>
+                <li><a href="cricket_boards.php" class="nav-link px-4 py-2 rounded-full hover:bg-white hover:text-blue-600">Cricket Boards</a></li>
+                <li><a href="admin_stats.php" class="nav-link px-4 py-2 rounded-full hover:bg-white hover:text-blue-600">View Statistics</a></li>
+                <li><a href="about.html" class="nav-link px-4 py-2 rounded-full hover:bg-white hover:text-blue-600">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Search Player</h2>
+            <form action="player_search.php" method="post" class="flex justify-center items-center space-x-4">
+                <input 
+                    type="text" 
+                    name="playername" 
+                    placeholder="Enter Player Name" 
+                    class="w-64 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                <button 
+                    type="submit" 
+                    name="submit" 
+                    class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300"
+                >
+                    Search
+                </button>
+            </form>
+        </section>
+
+        <!-- Slider Container -->
+        <section class="slider-container mb-8">
+            <div class="slider" id="slider">
+                <div class="slide"><img src="img/CSK-vs-DC-Toss-Prediction.jpg" alt="Cricket Match 1"></div>
+                <div class="slide"><img src="img/WEBSITE-TEMPLATE-22.png" alt="Cricket Match 2"></div>
+                <div class="slide"><img src="img/SRH-vs-CSK-Head-to-Head.webp" alt="Cricket Match 3"></div>
+            </div>
+            <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 fixed bottom-0 w-full">
+        <div class="container mx-auto px-4">
+            <ul class="flex flex-wrap justify-center space-x-4">
+                <li><a href="addplayer.html" class="footer-link px-4 py-2 rounded hover:bg-gray-600">Add Player</a></li>
+                <li><a href="addschedule.html" class="footer-link px-4 py-2 rounded hover:bg-gray-600">Add Schedule</a></li>
+                <li><a href="addstadium.html" class="footer-link px-4 py-2 rounded hover:bg-gray-600">Add Stadium</a></li>
+                <li><a href="deleteplayer.html" class="footer-link px-4 py-2 rounded hover:bg-gray-600">Delete Player</a></li>
+                <li><a href="deleteschedule.html" class="footer-link px-4 py-2 rounded hover:bg-gray-600">Delete Schedule</a></li>
+                <li><a href="deletestadium.html" class="footer-link px-4 py-2 rounded hover:bg-gray-600">Delete Stadium</a></li>
+                <li><a href="admin.html" class="footer-link px-4 py-2 rounded hover:bg-gray-600">Logout</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            document.getElementById('slider').style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Auto-slide every 5 seconds
+        setInterval(() => moveSlide(1), 5000);
+    </script>
+</body>
+</html>
